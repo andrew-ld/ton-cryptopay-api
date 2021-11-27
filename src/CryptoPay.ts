@@ -10,6 +10,11 @@ export class CryptoPay {
         this.baseUrl = `${baseUrl}/app${token}`
     }
 
+    /*
+        Call a method of ton cryptopay api.
+        Returns T if the request was successful.
+        Raises ResponseError if you have entered an incorrect parameter.
+    */
     async send<T>(request: AbstractMethod<T>): Promise<T> {
         let url = request.getSource(this.baseUrl).toString()
         let params = new URLSearchParams(_.omitBy(request.getParams(), isNullOrUndefined))
