@@ -45,3 +45,7 @@ console.log(result)
 `GetMe`: For testing your app's authentication token.
 
 `GetPayments`: Get paid and unconfirmed invoices of your app. 
+
+
+## Advanced examples
+https://github.com/andrew-ld/ton-cryptopay-api/tree/master/examples
