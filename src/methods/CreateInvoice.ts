@@ -46,7 +46,17 @@ export class CreateInvoice extends AbstractMethod<Invoice> {
      */
     payload?: string
 
-    constructor(asset: string, amount: string, description?: string, paidBtnName?: string, paidBtnUrl?: string, payload?: string) {
+    /*
+        Optional. Allow adding comments when paying an invoice. Default is true.
+    */
+    allowComments?: boolean
+
+    /*
+        Optional. Allow pay invoice as anonymous. Default is true.
+    */
+    allowAnonymous?: boolean
+
+    constructor(asset: string, amount: string, description?: string, paidBtnName?: string, paidBtnUrl?: string, payload?: string, allowComments?: boolean, allowAnonymous?: boolean) {
         super()
         this.asset = asset
         this.amount = amount
@@ -54,6 +64,8 @@ export class CreateInvoice extends AbstractMethod<Invoice> {
         this.paidBtnName = paidBtnName
         this.paidBtnUrl = paidBtnUrl
         this.payload = payload
+        this.allowComments = allowComments
+        this.allowAnonymous = allowAnonymous
     }
 
     getSource(baseUrl: string): URL {
@@ -67,7 +79,9 @@ export class CreateInvoice extends AbstractMethod<Invoice> {
             description: this.description,
             paid_btn_name: this.paidBtnName,
             paid_btn_url: this.paidBtnUrl,
-            payload: this.payload
+            payload: this.payload,
+            allow_comments: this.allowComments,
+            allow_anonymous: this.allowAnonymous
         }
     }
 
