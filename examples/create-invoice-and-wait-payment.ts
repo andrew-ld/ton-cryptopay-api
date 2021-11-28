@@ -16,7 +16,7 @@ async function main() {
     while (true) {
         await delay(1000)
 
-        let invoices = await api.send(new GetInvoices(undefined, invoice.invoiceId.toString()))
+        let invoices = await api.send(GetInvoices.fromOpts({invoiceIds: invoice.invoiceId.toString()}))
 
         if (!invoices.length) {
             continue

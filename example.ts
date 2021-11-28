@@ -35,7 +35,7 @@ async function main() {
 
     console.log(`new invoice, id: ${newInvoice.invoiceId}, url: ${newInvoice.payUrl}`)
 
-    let invoices = await api.send(new GetInvoices(undefined, newInvoice.invoiceId.toString()))
+    let invoices = await api.send(GetInvoices.fromOpts({invoiceIds: newInvoice.invoiceId.toString()}))
 
     console.log(`new invoice id from get invoices: ${invoices[0].invoiceId}`)
 

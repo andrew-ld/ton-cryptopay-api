@@ -2,6 +2,17 @@ import { AbstractMethod } from "./AbstractMethod"
 import { Invoice } from "../types/Invoice"
 import { recordToCamelCase } from "../utils"
 
+export declare const CreateInvoiceOpts: {
+    asset: string
+    amount: string
+    description?: string
+    paidBtnName?: string
+    paidBtnUrl?: string
+    payload?: string
+    allowComments?: boolean
+    allowAnonymous?: boolean
+}
+
 /*
     Use this method to create a new invoice. 
     Returns object of created invoice.
@@ -56,7 +67,16 @@ export class CreateInvoice extends AbstractMethod<Invoice> {
     */
     allowAnonymous?: boolean
 
-    constructor(asset: string, amount: string, description?: string, paidBtnName?: string, paidBtnUrl?: string, payload?: string, allowComments?: boolean, allowAnonymous?: boolean) {
+    constructor(
+        asset: string,
+        amount: string,
+        description?: string,
+        paidBtnName?: string,
+        paidBtnUrl?: string,
+        payload?: string,
+        allowComments?: boolean,
+        allowAnonymous?: boolean
+    ) {
         super()
         this.asset = asset
         this.amount = amount
@@ -66,6 +86,19 @@ export class CreateInvoice extends AbstractMethod<Invoice> {
         this.payload = payload
         this.allowComments = allowComments
         this.allowAnonymous = allowAnonymous
+    }
+
+    static fromOpts(opts: typeof CreateInvoiceOpts): CreateInvoice {
+        return new CreateInvoice(
+            opts.asset,
+            opts.amount,
+            opts.description,
+            opts.paidBtnName,
+            opts.paidBtnUrl,
+            opts.payload,
+            opts.allowComments,
+            opts.allowAnonymous
+        )
     }
 
     getSource(baseUrl: string): URL {

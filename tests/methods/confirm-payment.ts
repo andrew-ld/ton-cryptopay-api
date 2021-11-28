@@ -7,5 +7,10 @@ describe('methods', function() {
         expect(obj.invoiceId).equal(10)
         expect(obj.getParams()).deep.equal({ invoice_id: 10 })
         expect(obj.getSource("https://test").toString()).equal("https://test/confirmPayment")
+
+
+        let objFromOpts = ConfirmPayment.fromOpts({invoiceId: 10})
+        expect(objFromOpts.invoiceId).equal(10)
+        expect(objFromOpts).deep.equal(obj)
     })
 })

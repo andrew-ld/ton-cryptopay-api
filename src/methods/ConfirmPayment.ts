@@ -2,6 +2,10 @@ import { AbstractMethod } from "./AbstractMethod"
 import { Invoice } from "../types/Invoice"
 import { recordToCamelCase } from "../utils"
 
+export declare const ConfirmPaymentOpts: {
+    invoiceId: number
+}
+
 /*
     Use this method to confirm paid invoice of your app. 
     On success, the return confirmed invoice.
@@ -15,6 +19,10 @@ export class ConfirmPayment extends AbstractMethod<Invoice> {
     constructor(invoiceId: number) {
         super()
         this.invoiceId = invoiceId
+    }
+
+    static fromOpts(opts: typeof ConfirmPaymentOpts): ConfirmPayment {
+        return new ConfirmPayment(opts.invoiceId)
     }
 
     getSource(baseUrl: string): URL {

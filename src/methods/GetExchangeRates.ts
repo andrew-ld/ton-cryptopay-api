@@ -2,11 +2,17 @@ import { Currency } from "../types/Currency"
 import { recordToCamelCase } from "../utils"
 import { AbstractMethod } from "./AbstractMethod"
 
+export declare const GetExchangeRatesOpts: {}
+
 /*
     Use this method to get exchange rates of supported currencies. 
     Returns array of currencies.
 */
 export class GetExchangeRates extends AbstractMethod<Currency[]> {
+    static fromOpts(_opts: typeof GetExchangeRatesOpts): GetExchangeRates {
+        return new GetExchangeRates()
+    }
+
     getSource(baseUrl: string): URL {
         return new URL(baseUrl + "/getExchangeRates")
     }

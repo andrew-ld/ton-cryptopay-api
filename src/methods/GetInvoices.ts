@@ -2,6 +2,14 @@ import { AbstractMethod } from "./AbstractMethod"
 import { Invoice } from "../types/Invoice"
 import { recordToCamelCase } from "../utils"
 
+export declare const GetInvoicesOpts: {
+    asset?: string
+    invoiceIds?: string
+    status?: string
+    offset?: number
+    count?: number
+}
+
 /*
     Use this method to get invoices of your app.
     On success, the returns array of invoices.
@@ -45,6 +53,16 @@ export class GetInvoices extends AbstractMethod<Invoice[]> {
         this.status = status
         this.offset = offset
         this.count = count
+    }
+
+    static fromOpts(opts: typeof GetInvoicesOpts): GetInvoices {
+        return new GetInvoices(
+            opts.asset,
+            opts.invoiceIds,
+            opts.asset,
+            opts.offset,
+            opts.count
+        )
     }
 
     getSource(baseUrl: string): URL {

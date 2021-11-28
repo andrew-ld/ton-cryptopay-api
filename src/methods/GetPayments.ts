@@ -2,6 +2,11 @@ import { AbstractMethod } from "./AbstractMethod"
 import { Invoice } from "../types/Invoice"
 import { recordToCamelCase } from "../utils"
 
+export declare const GetPaymentsOpts: {
+    offset?: number
+    count?: number
+}
+
 /*
     Use this method to get paid and unconfirmed invoices of your app. 
     On success, the returns array of paid and unconfirmed invoices.
@@ -23,6 +28,13 @@ export class GetPayments extends AbstractMethod<Invoice[]> {
         super()
         this.offset = offset
         this.count = count
+    }
+
+    static fromOpts(opts: typeof GetPaymentsOpts): GetPayments {
+        return new GetPayments(
+            opts.offset,
+            opts.count
+        )
     }
 
     getSource(baseUrl: string): URL {

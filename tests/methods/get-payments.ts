@@ -8,5 +8,9 @@ describe('methods', function() {
         expect(obj.count).equal(20)
         expect(obj.getParams()).deep.equal({ offset: 10, count: 20 })
         expect(obj.getSource("https://test").toString()).equal("https://test/getPayments")
+
+        let objFromOpts = GetPayments.fromOpts({count: 69})
+        expect(objFromOpts.count).equal(69)
+        expect(objFromOpts.offset).equal(undefined)
     })
 })

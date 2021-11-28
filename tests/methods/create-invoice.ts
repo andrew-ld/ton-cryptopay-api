@@ -22,5 +22,12 @@ describe('methods', function() {
         )
 
         expect(obj.getSource("https://test").toString()).equal("https://test/createInvoice")
+
+        let objFromOpts = CreateInvoice.fromOpts({asset: "TON", amount: "30", allowAnonymous: true})
+
+        expect(objFromOpts.asset).equal("TON")
+        expect(objFromOpts.amount).equal("30")
+        expect(objFromOpts.description).equal(undefined)
+        expect(objFromOpts.allowAnonymous).equal(true)
     })
 })
