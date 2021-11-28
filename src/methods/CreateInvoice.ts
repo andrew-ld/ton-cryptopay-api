@@ -89,3 +89,5 @@ export class CreateInvoice extends AbstractMethod<Invoice> {
         return recordToCamelCase(unparsedResponse["result"]) as Invoice
     }
 }
+
+export default CreateInvoice

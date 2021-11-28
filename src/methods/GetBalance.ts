@@ -25,3 +25,5 @@ export class GetBalance extends AbstractMethod<Asset[]> {
         return result
     }
 }
+
+export default GetBalance

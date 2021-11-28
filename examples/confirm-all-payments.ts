@@ -1,4 +1,6 @@
-import { CryptoPay, GetInvoices, ConfirmPayment } from "@andrew-ld/cryptopay-api";
+import { CryptoPay } from "@andrew-ld/cryptopay-api";
+import { GetInvoices } from "@andrew-ld/cryptopay-api/methods/GetInvoices"
+import { ConfirmPayment } from "@andrew-ld/cryptopay-api/methods/ConfirmPayment"
 
 async function main() {
     let api = new CryptoPay("https://testnet-pay.crypt.bot", "3214:CENSURED")

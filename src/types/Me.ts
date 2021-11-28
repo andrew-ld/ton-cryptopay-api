@@ -3,3 +3,5 @@ export interface Me {
     name: string
     paymentProcessingBotUsername: string
 }
+
+export default Me

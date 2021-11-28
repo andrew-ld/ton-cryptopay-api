@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { GetMe } from "../../src/index"
+import { GetMe } from "../../src/methods/GetMe"
 
 describe('methods', function() {
     it('getMe', function() {

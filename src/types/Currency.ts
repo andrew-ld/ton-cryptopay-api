@@ -4,3 +4,5 @@ export interface Currency {
     target: string
     rate: string
 }
+
+export default Currency

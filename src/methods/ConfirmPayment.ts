@@ -31,3 +31,5 @@ export class ConfirmPayment extends AbstractMethod<Invoice> {
         return recordToCamelCase(unparsedResponse["result"]) as Invoice
     }
 }
+
+export default ConfirmPayment

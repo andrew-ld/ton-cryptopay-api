@@ -12,3 +12,5 @@ export interface Invoice {
     paidBtnUrl: string
     isConfirmed: boolean
 }
+
+export default Invoice

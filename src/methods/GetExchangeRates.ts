@@ -25,3 +25,6 @@ export class GetExchangeRates extends AbstractMethod<Currency[]> {
         return result
     }
 }
+
+
+export default GetExchangeRates

@@ -17,3 +17,5 @@ export abstract class AbstractMethod<T> { // T: represents the response type of 
     */
     abstract deserializeResponse(unparsedResponse: Record<string, any>): T
 }
+
+export default AbstractMethod

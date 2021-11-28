@@ -71,3 +71,5 @@ export class GetInvoices extends AbstractMethod<Invoice[]> {
         return result
     }
 }
+
+export default GetInvoices

@@ -23,7 +23,7 @@ let client = new CryptoPay(endpoint, token)
 
 ## Call a method
 ```typescript
-import { GetMe } from "@andrew-ld/cryptopay-api";
+import { GetMe } from "@andrew-ld/cryptopay-api/methods/GetMe";
 
 let result = await client.send(new GetMe())
 console.log(result)

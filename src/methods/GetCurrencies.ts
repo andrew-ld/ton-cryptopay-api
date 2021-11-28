@@ -25,3 +25,5 @@ export class GetCurrencies extends AbstractMethod<SupportedCurrency[]> {
         return result
     }
 }
+
+export default GetCurrencies

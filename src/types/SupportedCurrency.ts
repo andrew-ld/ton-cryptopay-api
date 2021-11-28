@@ -7,3 +7,5 @@ export interface SupportedCurrency {
     url: string
     decimals: number
 }
+
+export default SupportedCurrency

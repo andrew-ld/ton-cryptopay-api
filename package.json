@@ -1,15 +1,13 @@
 {
   "name": "@andrew-ld/cryptopay-api",
-  "version": "1.0.0",
-  "files": [
-    "/dist"
-  ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "version": "1.0.2",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "scripts": {
     "example": "ts-node example.ts",
-    "build": "npx tsc",
-    "test": "mocha -r ts-node/register tests/**/*.ts"
+    "test": "mocha -r ts-node/register tests/**/*.ts",
+    "push": "npx tsc && cp package*.json dist && cd dist && npm publish --access public"
   },
   "keywords": [],
   "author": "andrew-ld",

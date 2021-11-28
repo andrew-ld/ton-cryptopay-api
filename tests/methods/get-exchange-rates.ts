@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { GetExchangeRates } from "../../src/index"
+import { GetExchangeRates } from "../../src/methods/GetExchangeRates"
 
 describe('methods', function() {
     it('getExchangeRates', function() {

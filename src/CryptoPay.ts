@@ -39,3 +39,5 @@ export class CryptoPay {
         return request.deserializeResponse(body)
     }
 }
+
+export default CryptoPay

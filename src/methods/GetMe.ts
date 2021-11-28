@@ -18,3 +18,5 @@ export class GetMe extends AbstractMethod<Me> {
         return recordToCamelCase(unparsedResponse["result"]) as Me
     }
 }
+
+export default GetMe

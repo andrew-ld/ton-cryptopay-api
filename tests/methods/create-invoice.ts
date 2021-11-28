@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { CreateInvoice } from "../../src/index"
+import { CreateInvoice } from "../../src/methods/CreateInvoice"
 
 describe('methods', function() {
     it('createInvoice', function() {

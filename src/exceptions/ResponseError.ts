@@ -18,3 +18,5 @@ export class ResponseError extends Error {
         this.code = code
     }
 }
+
+export default ResponseError
