@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios"
 import _ from "lodash"
 import { AbstractMethod } from "./methods/AbstractMethod"
-import { isNullOrUndefined, validateResponse } from "./utils"
+import { isNullOrUndefined, recordToSnakeCase, validateResponse } from "./utils"
 
 export class CryptoPay {
     baseUrl: string
@@ -15,14 +15,17 @@ export class CryptoPay {
         Returns T if the request was successful.
         Raises ResponseError if you have entered an incorrect parameter.
     */
-    async send<T>(request: AbstractMethod<T>): Promise<T> {
+    async send<Result, Params>(request: AbstractMethod<Result, Params>): Promise<Result> {
         let url = request.getSource(this.baseUrl).toString()
-        let params = new URLSearchParams(_.omitBy(request.getParams(), isNullOrUndefined))
+        
+        var params: Record<string, any> = request.getParams()
+        params = _.omitBy(params, isNullOrUndefined)
+        params = recordToSnakeCase(params)
 
         let response: AxiosResponse
 
         try {
-            response = await axios.post(url, params)
+            response = await axios.post(url, new URLSearchParams(params))
         } catch (err: any) {
             let body = err.response?.data
 

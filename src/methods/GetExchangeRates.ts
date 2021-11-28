@@ -8,7 +8,7 @@ export declare const GetExchangeRatesOpts: {}
     Use this method to get exchange rates of supported currencies. 
     Returns array of currencies.
 */
-export class GetExchangeRates extends AbstractMethod<Currency[]> {
+export class GetExchangeRates extends AbstractMethod<Currency[], typeof GetExchangeRatesOpts> {
     static fromOpts(_opts: typeof GetExchangeRatesOpts): GetExchangeRates {
         return new GetExchangeRates()
     }
@@ -17,11 +17,11 @@ export class GetExchangeRates extends AbstractMethod<Currency[]> {
         return new URL(baseUrl + "/getExchangeRates")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof GetExchangeRatesOpts {
         return {}
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): Currency[] {
         let result: Currency[] = []
 
         for (let invoice of unparsedResponse["result"]) {

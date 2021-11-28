@@ -11,7 +11,7 @@ export declare const GetPaymentsOpts: {
     Use this method to get paid and unconfirmed invoices of your app. 
     On success, the returns array of paid and unconfirmed invoices.
 */
-export class GetPayments extends AbstractMethod<Invoice[]> {
+export class GetPayments extends AbstractMethod<Invoice[], typeof GetPaymentsOpts> {
     /*
         Optional. Offset needed to return a specific subset of  invoices. 
         Default: 0.
@@ -41,14 +41,14 @@ export class GetPayments extends AbstractMethod<Invoice[]> {
         return new URL(baseUrl + "/getPayments")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof GetPaymentsOpts {
         return {
             offset: this.offset,
             count: this.count
         }
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): Invoice[] {
         let result: Invoice[] = []
 
         for (let invoice of unparsedResponse["result"]["items"]) {

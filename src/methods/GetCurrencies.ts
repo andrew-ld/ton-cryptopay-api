@@ -8,7 +8,7 @@ export declare const GetCurrenciesOpts: {}
     Use this method to supported currencies. 
     Returns array of currencies.
 */
-export class GetCurrencies extends AbstractMethod<SupportedCurrency[]> {
+export class GetCurrencies extends AbstractMethod<SupportedCurrency[], typeof GetCurrenciesOpts> {
     static fromOpts(_opts: typeof GetCurrenciesOpts): GetCurrencies {
         return new GetCurrencies()
     }
@@ -17,11 +17,11 @@ export class GetCurrencies extends AbstractMethod<SupportedCurrency[]> {
         return new URL(baseUrl + "/getCurrencies")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof GetCurrenciesOpts {
         return {}
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): SupportedCurrency[] {
         let result: SupportedCurrency[] = []
 
         for (let invoice of unparsedResponse["result"]) {

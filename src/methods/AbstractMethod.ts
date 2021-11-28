@@ -1,7 +1,7 @@
 /*
     Abstract definition of an api method.
 */
-export abstract class AbstractMethod<T> { // T: represents the response type of the method
+export abstract class AbstractMethod<Result, Params> {
     /*
         Returns the url to send the request to the api.
     */
@@ -10,12 +10,12 @@ export abstract class AbstractMethod<T> { // T: represents the response type of 
     /*
         Returns the parameters to send to the api.
     */
-    abstract getParams(): Record<string, any>
+    abstract getParams(): Params
 
     /*
         Parses the received response object into a typed one.
     */
-    abstract deserializeResponse(unparsedResponse: Record<string, any>): T
+    abstract deserializeResponse(unparsedResponse: Record<string, any>): Result
 }
 
 export default AbstractMethod

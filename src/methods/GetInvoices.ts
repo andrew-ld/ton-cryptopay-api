@@ -14,7 +14,7 @@ export declare const GetInvoicesOpts: {
     Use this method to get invoices of your app.
     On success, the returns array of invoices.
 */
-export class GetInvoices extends AbstractMethod<Invoice[]> {
+export class GetInvoices extends AbstractMethod<Invoice[], typeof GetInvoicesOpts> {
     /*
         Optional. Currency code. 
         Supported assets: BTC, TON, ETH (only testnet), USDT, USDC, BUSD. 
@@ -69,17 +69,17 @@ export class GetInvoices extends AbstractMethod<Invoice[]> {
         return new URL(baseUrl + "/getInvoices")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof GetInvoicesOpts {
         return {
             asset: this.asset,
-            invoice_ids: this.invoiceIds,
+            invoiceIds: this.invoiceIds,
             status: this.status,
             offset: this.offset,
             count: this.count
         }
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): Invoice[] {
         let result: Invoice[] = []
 
         for (let invoice of unparsedResponse["result"]["items"]) {

@@ -13,11 +13,11 @@ describe('methods', function() {
                 amount: "1",
                 asset: "test-asset",
                 description: "test-description",
-                paid_btn_name: "test-paid-btn-name",
-                paid_btn_url: "test-paid-btn-url",
+                paidBtnName: "test-paid-btn-name",
+                paidBtnUrl: "test-paid-btn-url",
                 payload: "test-payload",
-                allow_comments: false,
-                allow_anonymous: true
+                allowComments: false,
+                allowAnonymous: true
             }
         )
 

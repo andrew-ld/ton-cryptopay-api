@@ -20,6 +20,17 @@ export function recordToCamelCase(record: Record<string, any>): Record<string, a
     return result
 }
 
+export function recordToSnakeCase(record: Record<string, any>): Record<string, any> {
+    var result = {}
+
+    for (let [k, v] of Object.entries(record)) {
+        // @ts-ignore
+        result[_.snakeCase(k)] = v
+    }
+
+    return result
+}
+
 export function isNullOrUndefined(x: any) {
     return (x === null) || (x === undefined)
 }

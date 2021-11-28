@@ -17,7 +17,7 @@ export declare const CreateInvoiceOpts: {
     Use this method to create a new invoice. 
     Returns object of created invoice.
 */
-export class CreateInvoice extends AbstractMethod<Invoice> {
+export class CreateInvoice extends AbstractMethod<Invoice, typeof CreateInvoiceOpts> {
     /*
         Currency code. Supported assets: BTC, TON, ETH (only testnet), USDT, USDC, BUSD.
     */
@@ -105,20 +105,20 @@ export class CreateInvoice extends AbstractMethod<Invoice> {
         return new URL(baseUrl + "/createInvoice")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof CreateInvoiceOpts {
         return {
             asset: this.asset,
             amount: this.amount,
             description: this.description,
-            paid_btn_name: this.paidBtnName,
-            paid_btn_url: this.paidBtnUrl,
+            paidBtnName: this.paidBtnName,
+            paidBtnUrl: this.paidBtnUrl,
             payload: this.payload,
-            allow_comments: this.allowComments,
-            allow_anonymous: this.allowAnonymous
+            allowComments: this.allowComments,
+            allowAnonymous: this.allowAnonymous
         }
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): Invoice {
         return recordToCamelCase(unparsedResponse["result"]) as Invoice
     }
 }

@@ -10,7 +10,7 @@ export declare const ConfirmPaymentOpts: {
     Use this method to confirm paid invoice of your app. 
     On success, the return confirmed invoice.
 */
-export class ConfirmPayment extends AbstractMethod<Invoice> {
+export class ConfirmPayment extends AbstractMethod<Invoice, typeof ConfirmPaymentOpts> {
     /*
         Invoice ID you want to confirm.
     */
@@ -29,13 +29,13 @@ export class ConfirmPayment extends AbstractMethod<Invoice> {
         return new URL(baseUrl + "/confirmPayment")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof ConfirmPaymentOpts {
         return {
-            invoice_id: this.invoiceId
+            invoiceId: this.invoiceId
         }
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): Invoice {
         return recordToCamelCase(unparsedResponse["result"]) as Invoice
     }
 }

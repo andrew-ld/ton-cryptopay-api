@@ -7,7 +7,7 @@ export declare const GetMeOpts: {}
 /*
     A simple method for testing your app's authentication token
 */
-export class GetMe extends AbstractMethod<Me> {
+export class GetMe extends AbstractMethod<Me, typeof GetMeOpts> {
     static fromOpts(_opts: typeof GetMeOpts): GetMe {
         return new GetMe()
     }
@@ -16,11 +16,11 @@ export class GetMe extends AbstractMethod<Me> {
         return new URL(baseUrl + "/getMe")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof GetMeOpts {
         return {}
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): Me {
         return recordToCamelCase(unparsedResponse["result"]) as Me
     }
 }

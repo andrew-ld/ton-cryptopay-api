@@ -8,7 +8,7 @@ export declare const GetBalanceOpts: {}
     Use this method to get balance of your app. 
     Returns array of assets.
 */
-export class GetBalance extends AbstractMethod<Asset[]> {
+export class GetBalance extends AbstractMethod<Asset[], typeof GetBalanceOpts> {
     static fromOpts(_opts: typeof GetBalanceOpts): GetBalance {
         return new GetBalance()
     }
@@ -17,11 +17,11 @@ export class GetBalance extends AbstractMethod<Asset[]> {
         return new URL(baseUrl + "/getBalance")
     }
 
-    getParams(): Record<string, any> {
+    getParams(): typeof GetBalanceOpts {
         return {}
     }
 
-    deserializeResponse(unparsedResponse: Record<string, any>) {
+    deserializeResponse(unparsedResponse: Record<string, any>): Asset[] {
         let result: Asset[] = []
 
         for (let invoice of unparsedResponse["result"]) {
